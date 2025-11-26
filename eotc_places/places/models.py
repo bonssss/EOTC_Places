@@ -10,7 +10,7 @@ class HolyPlace(models.Model):
     description = models.TextField()
     history = models.TextField()
     latitude = models.FloatField(null=True , blank=True)
-    longtude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
     
     def __str__(self):
         return self.name
