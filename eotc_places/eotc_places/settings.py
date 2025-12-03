@@ -17,7 +17,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 import cloudinary
 from dotenv import load_dotenv
+
 load_dotenv()
+
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,6 +50,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'corsheaders',
     'cloudinary_storage',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -143,3 +148,9 @@ cloudinary.config(
     api_key = os.getenv("CLOUD_API_KEY"),
     api_secret = os.getenv("CLOUD_API_SECRET")
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}
