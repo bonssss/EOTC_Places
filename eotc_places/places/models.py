@@ -18,6 +18,8 @@ class HolyPlace(models.Model):
 class PlaceImage(models.Model):
     place = models.ForeignKey(HolyPlace, related_name="images", on_delete=models.CASCADE)
     image = CloudinaryField('image')
+    public_id = models.CharField(max_length=255, null=True, blank=True)
+
 class PlaceVideo(models.Model):
     place = models.ForeignKey(HolyPlace, related_name="videos", on_delete=models.CASCADE)
     video = models.URLField()
